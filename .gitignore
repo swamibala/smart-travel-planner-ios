@@ -1,0 +1,48 @@
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData/
+*.hmap
+*.ipa
+*.vis
+*.xctestconfig
+
+# Swift PM
+.build/
+
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your version control system.
+Pods/
+# Commit the lock file.
+Podfile.lock
+
+# macOS
+.DS_Store
+
+# Large Model Files (Too big for GitHub)
+*.task
+*.bin
+*.tflite
+gemma3-1b-it-int4.task
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Code Injection
+#
+iOSInjectionProject/
