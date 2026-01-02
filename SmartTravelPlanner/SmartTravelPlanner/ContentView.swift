@@ -6,27 +6,39 @@ struct ContentView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Gemma 3 1B Sanity Check")
+            Text("Smart Travel Planner")
                 .font(.headline)
             
-            // Model Loading State
+            // Dual Model Loading State
             if gemmaService.isModelLoading {
                 VStack {
                     ProgressView()
-                    Text("Loading Model into Memory...")
+                    Text("Loading Models...")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-            } else if gemmaService.isModelLoaded {
-                Text("● Model Ready")
-                    .foregroundColor(.green)
-                    .font(.caption)
-                    .fontWeight(.bold)
-            } else if let error = gemmaService.errorMessage, !gemmaService.isModelLoaded {
+            } else {
+                // Show status for both models
+                HStack(spacing: 16) {
+                    ModelStatusBadge(
+                        icon: "🔧",
+                        name: "Tool",
+                        isLoaded: gemmaService.isToolModelLoaded
+                    )
+                    ModelStatusBadge(
+                        icon: "💬",
+                        name: "Chat",
+                        isLoaded: gemmaService.isChatModelLoaded
+                    )
+                }
+            }
+            
+            // Error Display
+            if let error = gemmaService.errorMessage, !gemmaService.isModelLoading {
                 VStack {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .foregroundColor(.red)
-                    Text("Model Load Error")
+                    Text("Error")
                         .font(.caption)
                         .fontWeight(.bold)
                     Text(error)
@@ -56,29 +68,24 @@ struct ContentView: View {
                 }
             }
 
-            // Generation Loading Indicator
+            // Pipeline Progress Indicator
             if gemmaService.isGenerating {
                 HStack {
                     ProgressView()
-                    Text("Streaming response...")
+                    Text(gemmaService.pipelineStep)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-            } else if let error = gemmaService.errorMessage, gemmaService.isModelLoaded {
-                // Runtime generation error
-                Text(error)
-                    .foregroundColor(.red)
-                    .font(.caption)
             }
 
             // Input Area
             HStack(spacing: 12) {
-                TextField("Enter your prompt...", text: $prompt)
+                TextField("Ask me anything about travel...", text: $prompt)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .disabled(!gemmaService.isModelLoaded || gemmaService.isGenerating)
+                    .disabled(!gemmaService.isAnyModelLoaded || gemmaService.isGenerating)
                     .submitLabel(.send)
                     .onSubmit {
-                        if !prompt.isEmpty && gemmaService.isModelLoaded && !gemmaService.isGenerating {
+                        if !prompt.isEmpty && gemmaService.isAnyModelLoaded && !gemmaService.isGenerating {
                             gemmaService.generateStream(prompt: prompt)
                         }
                     }
@@ -92,14 +99,38 @@ struct ContentView: View {
                         .fontWeight(.semibold)
                         .padding(.horizontal, 16)
                         .padding(.vertical, 8)
-                        .background(!gemmaService.isModelLoaded || gemmaService.isGenerating || prompt.isEmpty ? Color.gray : Color.blue)
+                        .background(!gemmaService.isAnyModelLoaded || gemmaService.isGenerating || prompt.isEmpty ? Color.gray : Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(8)
                 }
-                .disabled(prompt.isEmpty || !gemmaService.isModelLoaded || gemmaService.isGenerating)
+                .disabled(prompt.isEmpty || !gemmaService.isAnyModelLoaded || gemmaService.isGenerating)
             }
             .padding(.bottom)
         }
         .padding()
+    }
+}
+
+// MARK: - Model Status Badge Component
+struct ModelStatusBadge: View {
+    let icon: String
+    let name: String
+    let isLoaded: Bool
+    
+    var body: some View {
+        HStack(spacing: 6) {
+            Text(icon)
+                .font(.caption)
+            Text(name)
+                .font(.caption2)
+                .fontWeight(.medium)
+            Circle()
+                .fill(isLoaded ? Color.green : Color.gray)
+                .frame(width: 6, height: 6)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .background(isLoaded ? Color.green.opacity(0.1) : Color.gray.opacity(0.1))
+        .cornerRadius(12)
     }
 }

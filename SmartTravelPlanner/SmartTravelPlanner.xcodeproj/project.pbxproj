@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CF00F732EF9599D005D7A2F /* gemma3-1b-it-int4.task in Resources */ = {isa = PBXBuildFile; fileRef = 0CF00F722EF9599D005D7A2F /* gemma3-1b-it-int4.task */; };
 		1122E3C3EDC7B7AE13EA727F /* Pods_SmartTravelPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D315B1C54231FDCCCF6DB3 /* Pods_SmartTravelPlanner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0CF00F542EF9581B005D7A2F /* SmartTravelPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartTravelPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0CF00F722EF9599D005D7A2F /* gemma3-1b-it-int4.task */ = {isa = PBXFileReference; lastKnownFileType = file; path = "gemma3-1b-it-int4.task"; sourceTree = "<group>"; };
 		35DC1DDB83BFC474856BA50D /* Pods-SmartTravelPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTravelPlanner.release.xcconfig"; path = "Target Support Files/Pods-SmartTravelPlanner/Pods-SmartTravelPlanner.release.xcconfig"; sourceTree = "<group>"; };
 		B0D77BB7B3C9E200D409C322 /* Pods-SmartTravelPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTravelPlanner.debug.xcconfig"; path = "Target Support Files/Pods-SmartTravelPlanner/Pods-SmartTravelPlanner.debug.xcconfig"; sourceTree = "<group>"; };
 		D8D315B1C54231FDCCCF6DB3 /* Pods_SmartTravelPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTravelPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,7 +40,6 @@
 		0CF00F4B2EF9581B005D7A2F = {
 			isa = PBXGroup;
 			children = (
-				0CF00F722EF9599D005D7A2F /* gemma3-1b-it-int4.task */,
 				0CF00F562EF9581B005D7A2F /* SmartTravelPlanner */,
 				0CF00F552EF9581B005D7A2F /* Products */,
 				E1DDD27A5D53995F81DD0C0C /* Pods */,
@@ -139,7 +136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CF00F732EF9599D005D7A2F /* gemma3-1b-it-int4.task in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
