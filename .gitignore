@@ -46,3 +46,21 @@ fastlane/test_output
 # Code Injection
 #
 iOSInjectionProject/
+
+# --- BRAIN FACTORY (AI Training) ---
+Brain_Factory/*.jsonl
+Brain_Factory/*.safetensors
+Brain_Factory/*.pth
+Brain_Factory/mlx_model/
+Brain_Factory/checkpoints/
+Brain_Factory/__pycache__/
+# Keep the scripts and adapters!
+!Brain_Factory/adapters/
+
+# --- TRAVEL AGENT (iOS) ---
+TravelAgent_iOS/DerivedData/
+TravelAgent_iOS/.build/
+TravelAgent_iOS/*.mode1v3
+TravelAgent_iOS/*.pbuser
+TravelAgent_iOS/*.xcworkspace
+!TravelAgent_iOS/*.xcworkspace/contents.xcworkspacedata
