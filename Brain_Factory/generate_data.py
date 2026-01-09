@@ -70,10 +70,23 @@ chit_chat = [
 for q, a in chit_chat:
     dataset.append({"messages": [{"role": "user", "content": q}, {"role": "assistant", "content": a}]})
 
-# Save to JSONL
-output_file = "train.jsonl"
-with open(output_file, "w") as f:
-    for entry in dataset:
+# Split into train (80%) and validation (20%)
+random.shuffle(dataset)
+split_idx = int(len(dataset) * 0.8)
+train_data = dataset[:split_idx]
+valid_data = dataset[split_idx:]
+
+# Save train set
+train_file = "train.jsonl"
+with open(train_file, "w") as f:
+    for entry in train_data:
         f.write(json.dumps(entry) + "\n")
 
-print(f"✅ Success! Generated {len(dataset)} examples in '{output_file}'.")
+# Save validation set
+valid_file = "valid.jsonl"
+with open(valid_file, "w") as f:
+    for entry in valid_data:
+        f.write(json.dumps(entry) + "\n")
+
+print(f"✅ Success! Generated {len(train_data)} training examples in '{train_file}'.")
+print(f"✅ Generated {len(valid_data)} validation examples in '{valid_file}'.")

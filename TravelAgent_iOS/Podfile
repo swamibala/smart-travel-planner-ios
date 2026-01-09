@@ -1,12 +1,24 @@
-# Podfile
-platform :ios, '15.0'
-project 'SmartTravelPlanner/SmartTravelPlanner.xcodeproj'
+# Podfile for SmartTravelPlanner
+# Updated for MLX Swift Integration
+
+platform :ios, '17.0'
 
 target 'SmartTravelPlanner' do
   use_frameworks!
+  
+  # Note: MLX Swift is added via Swift Package Manager, not CocoaPods
+  # Add in Xcode: File -> Add Package Dependencies
+  # URL: https://github.com/ml-explore/mlx-swift
+  
+  # Keep WebSearchService dependency if needed
+  # pod 'MediaPipeTasksGenAI'    # Commented out - using MLX instead
+  # pod 'MediaPipeTasksGenAIC'   # Commented out - using MLX instead
+end
 
-  # Core MediaPipe GenAI Task library
-  pod 'MediaPipeTasksGenAI'
-  # C++ implementation required for physical devices
-  pod 'MediaPipeTasksGenAIC'
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '17.0'
+    end
+  end
 end

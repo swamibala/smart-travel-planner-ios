@@ -2,7 +2,8 @@
 //  SmartTravelPlannerApp.swift
 //  SmartTravelPlanner
 //
-//  Created by swaminathan balakrishnan on 22/12/2025.
+//  AI-powered travel planning assistant
+//  Uses on-device Gemma-2B-IT model fine-tuned with LoRA
 //
 
 import SwiftUI

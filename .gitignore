@@ -1,6 +1,22 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
 # Xcode
-#
+*.xcuserstate
+*.xcuserdatad
+xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.hmap
+*.ipa
+*.cer
+*.mobileprovision
+*.dSYM.zip
+*.dSYM
 build/
+Pods/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -9,58 +25,52 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata/
-*.xccheckout
-*.moved-aside
-DerivedData/
-*.hmap
-*.ipa
-*.vis
-*.xctestconfig
 
-# Swift PM
+# Swift Package Manager
+.swiftpm/
 .build/
+Package.resolved
 
 # CocoaPods
-#
-# We recommend against adding the Pods directory to your version control system.
 Pods/
-# Commit the lock file.
 Podfile.lock
 
-# macOS
-.DS_Store
-
-# Large Model Files (Too big for GitHub)
-*.task
-*.bin
-*.tflite
-gemma3-1b-it-int4.task
-
-# Fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
-
-# Code Injection
-#
-iOSInjectionProject/
-
-# --- BRAIN FACTORY (AI Training) ---
-Brain_Factory/*.jsonl
-Brain_Factory/*.safetensors
-Brain_Factory/*.pth
-Brain_Factory/mlx_model/
-Brain_Factory/checkpoints/
+# AI Training Artifacts
+Brain_Factory/adapters/
+Brain_Factory/Llama_TravelAgent/
 Brain_Factory/__pycache__/
-# Keep the scripts and adapters!
-!Brain_Factory/adapters/
+Brain_Factory/*.pyc
+Brain_Factory/.ipynb_checkpoints/
 
-# --- TRAVEL AGENT (iOS) ---
-TravelAgent_iOS/DerivedData/
-TravelAgent_iOS/.build/
-TravelAgent_iOS/*.mode1v3
-TravelAgent_iOS/*.pbuser
-TravelAgent_iOS/*.xcworkspace
-!TravelAgent_iOS/*.xcworkspace/contents.xcworkspacedata
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Model files (large)
+*.safetensors
+*.bin
+*.gguf
+*.pth
+*.pt
+
+# iOS Model folder (symlink/actual)
+TravelAgent_iOS/**/TravelAgent_Model/
+
+# Temporary files
+*.swp
+*.swo
+*~
+.*.sw?
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

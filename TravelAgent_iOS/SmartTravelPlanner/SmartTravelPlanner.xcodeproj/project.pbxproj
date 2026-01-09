@@ -6,133 +6,116 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		1122E3C3EDC7B7AE13EA727F /* Pods_SmartTravelPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D315B1C54231FDCCCF6DB3 /* Pods_SmartTravelPlanner.framework */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		0CF00F542EF9581B005D7A2F /* SmartTravelPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartTravelPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		35DC1DDB83BFC474856BA50D /* Pods-SmartTravelPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTravelPlanner.release.xcconfig"; path = "Target Support Files/Pods-SmartTravelPlanner/Pods-SmartTravelPlanner.release.xcconfig"; sourceTree = "<group>"; };
-		B0D77BB7B3C9E200D409C322 /* Pods-SmartTravelPlanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTravelPlanner.debug.xcconfig"; path = "Target Support Files/Pods-SmartTravelPlanner/Pods-SmartTravelPlanner.debug.xcconfig"; sourceTree = "<group>"; };
-		D8D315B1C54231FDCCCF6DB3 /* Pods_SmartTravelPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTravelPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C3C51CE2F0DC2AE00558084 /* SmartTravelPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartTravelPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0CF00F562EF9581B005D7A2F /* SmartTravelPlanner */ = {
+		0C3C51D02F0DC2AE00558084 /* SmartTravelPlanner */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SmartTravelPlanner;
+			sourceTree = "<group>";
+		};
+		0C3C52532F0DC59900558084 /* TravelAgent_Model */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TravelAgent_Model;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0CF00F512EF9581B005D7A2F /* Frameworks */ = {
+		0C3C51CB2F0DC2AE00558084 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1122E3C3EDC7B7AE13EA727F /* Pods_SmartTravelPlanner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0CF00F4B2EF9581B005D7A2F = {
+		0C3C51C52F0DC2AE00558084 = {
 			isa = PBXGroup;
 			children = (
-				0CF00F562EF9581B005D7A2F /* SmartTravelPlanner */,
-				0CF00F552EF9581B005D7A2F /* Products */,
-				E1DDD27A5D53995F81DD0C0C /* Pods */,
-				61EF04AC09AB7095D831DFF0 /* Frameworks */,
+				0C3C52532F0DC59900558084 /* TravelAgent_Model */,
+				0C3C51D02F0DC2AE00558084 /* SmartTravelPlanner */,
+				0C3C51CF2F0DC2AE00558084 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		0CF00F552EF9581B005D7A2F /* Products */ = {
+		0C3C51CF2F0DC2AE00558084 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CF00F542EF9581B005D7A2F /* SmartTravelPlanner.app */,
+				0C3C51CE2F0DC2AE00558084 /* SmartTravelPlanner.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		61EF04AC09AB7095D831DFF0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D8D315B1C54231FDCCCF6DB3 /* Pods_SmartTravelPlanner.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E1DDD27A5D53995F81DD0C0C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B0D77BB7B3C9E200D409C322 /* Pods-SmartTravelPlanner.debug.xcconfig */,
-				35DC1DDB83BFC474856BA50D /* Pods-SmartTravelPlanner.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0CF00F532EF9581B005D7A2F /* SmartTravelPlanner */ = {
+		0C3C51CD2F0DC2AE00558084 /* SmartTravelPlanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CF00F5F2EF9581C005D7A2F /* Build configuration list for PBXNativeTarget "SmartTravelPlanner" */;
+			buildConfigurationList = 0C3C51D92F0DC2AE00558084 /* Build configuration list for PBXNativeTarget "SmartTravelPlanner" */;
 			buildPhases = (
-				FA8DED3DAA5336CDC6AC9DB4 /* [CP] Check Pods Manifest.lock */,
-				0CF00F502EF9581B005D7A2F /* Sources */,
-				0CF00F512EF9581B005D7A2F /* Frameworks */,
-				0CF00F522EF9581B005D7A2F /* Resources */,
+				0C3C51CA2F0DC2AE00558084 /* Sources */,
+				0C3C51CB2F0DC2AE00558084 /* Frameworks */,
+				0C3C51CC2F0DC2AE00558084 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				0CF00F562EF9581B005D7A2F /* SmartTravelPlanner */,
+				0C3C51D02F0DC2AE00558084 /* SmartTravelPlanner */,
+				0C3C52532F0DC59900558084 /* TravelAgent_Model */,
 			);
 			name = SmartTravelPlanner;
+			packageProductDependencies = (
+			);
 			productName = SmartTravelPlanner;
-			productReference = 0CF00F542EF9581B005D7A2F /* SmartTravelPlanner.app */;
+			productReference = 0C3C51CE2F0DC2AE00558084 /* SmartTravelPlanner.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0CF00F4C2EF9581B005D7A2F /* Project object */ = {
+		0C3C51C62F0DC2AE00558084 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					0CF00F532EF9581B005D7A2F = {
+					0C3C51CD2F0DC2AE00558084 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
-			buildConfigurationList = 0CF00F4F2EF9581B005D7A2F /* Build configuration list for PBXProject "SmartTravelPlanner" */;
+			buildConfigurationList = 0C3C51C92F0DC2AE00558084 /* Build configuration list for PBXProject "SmartTravelPlanner" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 0CF00F4B2EF9581B005D7A2F;
+			mainGroup = 0C3C51C52F0DC2AE00558084;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0C3C51DE2F0DC3F500558084 /* XCRemoteSwiftPackageReference "mlx-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 0CF00F552EF9581B005D7A2F /* Products */;
+			productRefGroup = 0C3C51CF2F0DC2AE00558084 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0CF00F532EF9581B005D7A2F /* SmartTravelPlanner */,
+				0C3C51CD2F0DC2AE00558084 /* SmartTravelPlanner */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0CF00F522EF9581B005D7A2F /* Resources */ = {
+		0C3C51CC2F0DC2AE00558084 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -141,33 +124,8 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		FA8DED3DAA5336CDC6AC9DB4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SmartTravelPlanner-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		0CF00F502EF9581B005D7A2F /* Sources */ = {
+		0C3C51CA2F0DC2AE00558084 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -177,7 +135,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		0CF00F5D2EF9581C005D7A2F /* Debug */ = {
+		0C3C51D72F0DC2AE00558084 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -241,7 +199,7 @@
 			};
 			name = Debug;
 		};
-		0CF00F5E2EF9581C005D7A2F /* Release */ = {
+		0C3C51D82F0DC2AE00558084 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -298,9 +256,8 @@
 			};
 			name = Release;
 		};
-		0CF00F602EF9581C005D7A2F /* Debug */ = {
+		0C3C51DA2F0DC2AE00558084 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0D77BB7B3C9E200D409C322 /* Pods-SmartTravelPlanner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -319,10 +276,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = travelsmart.SmartTravelPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -335,9 +288,8 @@
 			};
 			name = Debug;
 		};
-		0CF00F612EF9581C005D7A2F /* Release */ = {
+		0C3C51DB2F0DC2AE00558084 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35DC1DDB83BFC474856BA50D /* Pods-SmartTravelPlanner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -356,10 +308,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"$(inherited)",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = travelsmart.SmartTravelPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -375,25 +323,36 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CF00F4F2EF9581B005D7A2F /* Build configuration list for PBXProject "SmartTravelPlanner" */ = {
+		0C3C51C92F0DC2AE00558084 /* Build configuration list for PBXProject "SmartTravelPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0CF00F5D2EF9581C005D7A2F /* Debug */,
-				0CF00F5E2EF9581C005D7A2F /* Release */,
+				0C3C51D72F0DC2AE00558084 /* Debug */,
+				0C3C51D82F0DC2AE00558084 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CF00F5F2EF9581C005D7A2F /* Build configuration list for PBXNativeTarget "SmartTravelPlanner" */ = {
+		0C3C51D92F0DC2AE00558084 /* Build configuration list for PBXNativeTarget "SmartTravelPlanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0CF00F602EF9581C005D7A2F /* Debug */,
-				0CF00F612EF9581C005D7A2F /* Release */,
+				0C3C51DA2F0DC2AE00558084 /* Debug */,
+				0C3C51DB2F0DC2AE00558084 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C3C51DE2F0DC3F500558084 /* XCRemoteSwiftPackageReference "mlx-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ml-explore/mlx-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.29.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
-	rootObject = 0CF00F4C2EF9581B005D7A2F /* Project object */;
+	rootObject = 0C3C51C62F0DC2AE00558084 /* Project object */;
 }

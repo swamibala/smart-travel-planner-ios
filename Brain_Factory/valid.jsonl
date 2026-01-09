@@ -1,0 +1,19 @@
+{"messages": [{"role": "user", "content": "What are the opening hours for Buckingham Palace?"}, {"role": "assistant", "content": "call:{\"tool\": \"search_web\", \"parameters\": {\"query\": \"opening hours Buckingham Palace\"}}"}]}
+{"messages": [{"role": "user", "content": "Where is The Shard?"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"The Shard\"}}"}]}
+{"messages": [{"role": "user", "content": "I need a coffee shop near Sky Garden"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"coffee near Sky Garden\"}}"}]}
+{"messages": [{"role": "user", "content": "Find The Shard on the map"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"The Shard\"}}"}]}
+{"messages": [{"role": "user", "content": "Where is London Eye?"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"London Eye\"}}"}]}
+{"messages": [{"role": "user", "content": "What are the opening hours for The Shard?"}, {"role": "assistant", "content": "call:{\"tool\": \"search_web\", \"parameters\": {\"query\": \"opening hours The Shard\"}}"}]}
+{"messages": [{"role": "user", "content": "What is the weather like at Buckingham Palace?"}, {"role": "assistant", "content": "call:{\"tool\": \"get_weather\", \"parameters\": {\"location_name\": \"Buckingham Palace\"}}"}]}
+{"messages": [{"role": "user", "content": "What is the weather like at Tate Modern?"}, {"role": "assistant", "content": "call:{\"tool\": \"get_weather\", \"parameters\": {\"location_name\": \"Tate Modern\"}}"}]}
+{"messages": [{"role": "user", "content": "What is the weather like at London Eye?"}, {"role": "assistant", "content": "call:{\"tool\": \"get_weather\", \"parameters\": {\"location_name\": \"London Eye\"}}"}]}
+{"messages": [{"role": "user", "content": "I want to go to Borough Market"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"Borough Market\"}}"}]}
+{"messages": [{"role": "user", "content": "Find me a restaurant near Covent Garden"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"restaurant near Covent Garden\"}}"}]}
+{"messages": [{"role": "user", "content": "What are the opening hours for London Eye?"}, {"role": "assistant", "content": "call:{\"tool\": \"search_web\", \"parameters\": {\"query\": \"opening hours London Eye\"}}"}]}
+{"messages": [{"role": "user", "content": "Where is Sky Garden?"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"Sky Garden\"}}"}]}
+{"messages": [{"role": "user", "content": "I want to go to Tower Bridge"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"Tower Bridge\"}}"}]}
+{"messages": [{"role": "user", "content": "Find London Eye on the map"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"London Eye\"}}"}]}
+{"messages": [{"role": "user", "content": "Find Sky Garden on the map"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"Sky Garden\"}}"}]}
+{"messages": [{"role": "user", "content": "What are the opening hours for British Museum?"}, {"role": "assistant", "content": "call:{\"tool\": \"search_web\", \"parameters\": {\"query\": \"opening hours British Museum\"}}"}]}
+{"messages": [{"role": "user", "content": "Where is Tower Bridge?"}, {"role": "assistant", "content": "call:{\"tool\": \"search_places\", \"parameters\": {\"query\": \"Tower Bridge\"}}"}]}
+{"messages": [{"role": "user", "content": "Is it raining at Sky Garden?"}, {"role": "assistant", "content": "call:{\"tool\": \"get_weather\", \"parameters\": {\"location_name\": \"Sky Garden\"}}"}]}
