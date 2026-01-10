@@ -51,7 +51,9 @@ struct ContentView: View {
                 inputBar
             }
             .navigationTitle("🧳 Travel Planner")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
     
