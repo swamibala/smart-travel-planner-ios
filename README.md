@@ -28,11 +28,13 @@ smart-travel-planner-ios/
 │   └── Llama_TravelAgent/      # Fused model (1.7GB)
 │
 └── TravelAgent_iOS/            # iOS Application
+    ├── Package.swift
     └── SmartTravelPlanner/
         ├── SmartTravelPlannerApp.swift
         ├── ContentView.swift
         ├── TravelAgentService.swift
-        └── TravelAgent_Model/   # Symlink to Llama_TravelAgent
+        └── Resources/
+            └── Llama_TravelAgent/   # Model weights
 ```
 
 ---
@@ -108,68 +110,37 @@ Creates `Llama_TravelAgent/` folder (1.7GB) ready for iOS.
 
 ### Setup
 
-**1. Open Xcode Project**
+**1. Open Project**
 
 ```bash
-cd TravelAgent_iOS/SmartTravelPlanner
-open SmartTravelPlanner.xcodeproj
+# Open the folder in Xcode to use Swift Package Manager
+open TravelAgent_iOS
 ```
 
-**2. Add MLX Swift Packages**
+**2. Add Model Weights**
 
-In Xcode: **File → Add Package Dependencies**
+1.  Locate your `Llama_TravelAgent` folder.
+2.  Copy or Move the **entire folder** to:
+    `TravelAgent_iOS/SmartTravelPlanner/Resources/Llama_TravelAgent`
 
-Add these two packages:
+    Structure:
+    ```
+    .../Resources/Llama_TravelAgent/
+        ├── config.json
+        ├── model.safetensors
+        └── tokenizer.json
+    ```
 
-```
-https://github.com/ml-explore/mlx-swift
-```
-Select: `MLX`, `MLXNN`, `MLXRandom`
+**3. Build and Run**
 
-```
-https://github.com/ml-explore/mlx-swift-examples
-```
-Select: `MLXLLM`, `MLXLLMCommon`
+- Select the `SmartTravelPlanner` scheme.
+- Select your target (e.g., iPhone 15 Simulator).
+- Run (Cmd+R).
 
-**3. Link the Model**
+**4. Enjoy!**
 
-```bash
-cd TravelAgent_iOS/SmartTravelPlanner/SmartTravelPlanner
-
-# Create symlink to fused model
-ln -s ../../../../Brain_Factory/Llama_TravelAgent TravelAgent_Model
-```
-
-Then in Xcode:
-- Right-click "SmartTravelPlanner" folder
-- **Add Files to SmartTravelPlanner...**
-- Select `TravelAgent_Model` folder
-- ✅ Create folder references
-- ✅ Add to target: SmartTravelPlanner
-
-**4. Update Prompt Format**
-
-Edit `TravelAgentService.swift` (line ~105):
-
-```swift
-// Update to Llama 3.2 format:
-let prompt = """
-<|begin_of_text|><|start_header_id|>user<|end_header_id|>
-
-\(input)<|eot_id|><|start_header_id|>assistant<|end_header_id|>
-
-"""
-```
-
-**5. Enable MLX Inference**
-
-In `TravelAgentService.swift`, uncomment the MLX code sections marked with `// TODO:`
-
-**6. Build and Run**
-
-- Connect iPhone
-- Select device in Xcode
-- Build and Run (Cmd+R)
+- The app handles MLX framework constraints automatically.
+- All inference runs locally on your device.
 
 ### Testing
 

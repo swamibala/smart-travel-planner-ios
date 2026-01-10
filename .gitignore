@@ -62,6 +62,7 @@ ENV/
 
 # iOS Model folder (symlink/actual)
 TravelAgent_iOS/**/TravelAgent_Model/
+TravelAgent_iOS/**/Llama_TravelAgent/
 
 # Temporary files
 *.swp

@@ -1,5 +1,9 @@
 import Foundation
 import Combine
+import MLX
+import MLXLLM
+import MLXLMCommon
+import Tokenizers
 
 /// Service for loading and running the Travel Agent LLM model
 /// Uses MLX Swift for on-device inference with the fused Gemma-2B-IT model
@@ -16,9 +20,7 @@ class TravelAgentService: ObservableObject {
     // MARK: - Private Properties  
     private var isModelLoaded = false
     
-    // TODO: Add MLX model and tokenizer properties when packages are configured
-    // private var model: LLMModel?
-    // private var tokenizer: Tokenizer?
+    private var modelContext: ModelContext?
     
     // MARK: - Initialization
     init() {
@@ -39,14 +41,14 @@ class TravelAgentService: ObservableObject {
         
         do {
             // Verify model folder exists in bundle
-            guard let modelURL = Bundle.main.url(forResource: "TravelAgent_Model", withExtension: nil) else {
+            guard let modelURL = Bundle.main.url(forResource: "Llama_TravelAgent", withExtension: nil) else {
                 throw TravelAgentError.modelNotFound
             }
             
             print("📂 Model path: \(modelURL.path)")
             
             // Verify required files
-            let requiredFiles = ["config.json", "model.safetensors", "tokenizer.model"]
+            let requiredFiles = ["config.json", "model.safetensors", "tokenizer.json"]
             for filename in requiredFiles {
                 let filePath = modelURL.appendingPathComponent(filename)
                 guard FileManager.default.fileExists(atPath: filePath.path) else {
@@ -56,19 +58,8 @@ class TravelAgentService: ObservableObject {
             
             print("✅ All model files present")
             
-            // TODO: Load actual MLX model when packages are configured
-            // Example code (uncomment when MLX packages added):
-            /*
-            import MLX
-            import MLXLLM
-            
             let configuration = ModelConfiguration(directory: modelURL)
-            let modelContainer = try await LLMModelFactory.shared.loadContainer(
-                configuration: configuration
-            )
-            self.model = modelContainer.model
-            self.tokenizer = modelContainer.tokenizer
-            */
+            self.modelContext = try await MLXLMCommon.loadModel(configuration: configuration)
             
             isModelLoaded = true
             modelStatus = "Model Ready"
@@ -90,7 +81,7 @@ class TravelAgentService: ObservableObject {
     
     /// Process a user query and generate a response
     func query(_ input: String) async {
-        guard isModelLoaded else {
+        guard let modelContext = modelContext, isModelLoaded else {
             errorMessage = "Model not loaded"
             return
         }
@@ -100,7 +91,7 @@ class TravelAgentService: ObservableObject {
         errorMessage = nil
         
         // Format prompt using ChatML template (matches our training)
-        let _ = """
+        let prompt = """
         <start_of_turn>user
         \(input)<end_of_turn>
         <start_of_turn>model
@@ -108,67 +99,38 @@ class TravelAgentService: ObservableObject {
         
         print("📝 Query: \(input)")
         
-        // TODO: Replace with actual MLX generation when packages configured
-        // Example code (uncomment when MLX packages added):
-        /*
-        import MLXLLM
-        
-        let result = try await MLXLLM.generate(
-            prompt: prompt,
-            model: model!,
-            tokenizer: tokenizer!,
-            extraEOSTokens: ["<end_of_turn>"],
-            maxTokens: 200,
-            temperature: 0.3
-        )
-        responseText = result.output
-        */
-        
-        // Simulated response for now
-        await simulateResponse(for: input)
-        
-        // Parse and execute tools if present
-        if responseText.contains("call:{") {
-            await parseAndExecuteTool()
+        do {
+            // Prepare input
+            let lmInput = try await modelContext.processor.prepare(input: .init(prompt: .text(prompt)))
+            
+            let parameters = GenerateParameters(
+                maxTokens: 200,
+                temperature: 0.3
+            )
+            
+            let stream = try generate(input: lmInput, parameters: parameters, context: modelContext)
+            
+            var accumulatedText = ""
+            for await generation in stream {
+                switch generation {
+                case .chunk(let text):
+                    accumulatedText += text
+                    responseText = accumulatedText
+                default: break
+                }
+            }
+            
+            // Parse and execute tools if present
+            if responseText.contains("call:{") {
+                await parseAndExecuteTool()
+            }
+            
+        } catch {
+            print("❌ Generation Error: \(error)")
+            errorMessage = "Generation failed: \(error.localizedDescription)"
         }
         
         isGenerating = false
-    }
-    
-    /// Simulate model response (temporary until MLX packages added)
-    private func simulateResponse(for input: String) async {
-        try? await Task.sleep(nanoseconds: 500_000_000)
-        
-        let lowercased = input.lowercased()
-        
-        if lowercased.contains("where") || lowercased.contains("find") {
-            responseText = """
-            call:{"tool": "search_places", "parameters": {"query": "\(input)"}}
-            """
-        } else if lowercased.contains("weather") || lowercased.contains("rain") {
-            let location = extractLocation(from: input) ?? "London"
-            responseText = """
-            call:{"tool": "get_weather", "parameters": {"location_name": "\(location)"}}
-            """
-        } else if lowercased.contains("ticket") || lowercased.contains("price") {
-            responseText = """
-            call:{"tool": "search_web", "parameters": {"query": "\(input)"}}
-            """
-        } else {
-            responseText = "I can help you plan your trip! Try asking about places, weather, or travel information."
-        }
-    }
-    
-    private func extractLocation(from input: String) -> String? {
-        let words = input.components(separatedBy: " ")
-        let commonLocations = ["london", "paris", "tokyo", "new york", "rome"]
-        
-        for word in words {
-            if commonLocations.contains(word.lowercased()) {
-                return word.capitalized
-            }
-        }
-        return nil
     }
     
     // MARK: - Tool Execution
@@ -231,7 +193,7 @@ enum TravelAgentError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .modelNotFound:
-            return "TravelAgent_Model folder not found. Please add it to the project."
+            return "Llama_TravelAgent folder not found. Please add it to the project."
         case .missingFile(let file):
             return "Missing: \(file)"
         }
