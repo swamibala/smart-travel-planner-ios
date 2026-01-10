@@ -2,13 +2,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "SmartTravelPlanner",
+    name: "TravelAgentApp",
     platforms: [
         .iOS(.v17),
         .macOS(.v14)
     ],
     products: [
-        .executable(name: "SmartTravelPlanner", targets: ["SmartTravelPlanner"])
+        .executable(name: "SmartTravelPlannerApp", targets: ["SmartTravelPlanner"])
     ],
     dependencies: [
         .package(url: "https://github.com/ml-explore/mlx-swift", branch: "main"),
@@ -23,7 +23,7 @@ let package = Package(
             ],
             path: "SmartTravelPlanner",
             resources: [
-                .process("Resources"),
+                .copy("Resources/Llama_TravelAgent"),
                 .process("Assets.xcassets")
             ]
         )

@@ -40,8 +40,8 @@ class TravelAgentService: ObservableObject {
         errorMessage = nil
         
         do {
-            // Verify model folder exists in bundle
-            guard let modelURL = Bundle.main.url(forResource: "Llama_TravelAgent", withExtension: nil) else {
+            // Use Bundle.module for SPM resources
+            guard let modelURL = Bundle.module.url(forResource: "Llama_TravelAgent", withExtension: nil) else {
                 throw TravelAgentError.modelNotFound
             }
             
@@ -91,7 +91,19 @@ class TravelAgentService: ObservableObject {
         errorMessage = nil
         
         // Format prompt using ChatML template (matches our training)
+        // Format prompt using ChatML template with system instructions
         let prompt = """
+        <start_of_turn>system
+        You are a helpful travel assistant. You have access to these tools:
+        - search_places(query): Finds places on a map.
+        - get_weather(location_name): Gets weather.
+        - search_web(query): Searches the web.
+        
+        To use a tool, you MUST output a JSON object prefixed with 'call:'.
+        Example: call:{"tool": "search_places", "parameters": {"query": "Eiffel Tower"}}
+        
+        Do not use any other format for tools. If no tool is needed, just reply normally.
+        <end_of_turn>
         <start_of_turn>user
         \(input)<end_of_turn>
         <start_of_turn>model

@@ -6,8 +6,9 @@ struct ContentView: View {
     @FocusState private var isInputFocused: Bool
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 0) {
+               // ... (existing content logic is inside) ...
                 // Status bar
                 statusBar
                 
@@ -55,6 +56,9 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             #endif
         }
+        #if os(macOS)
+        .frame(minWidth: 400, minHeight: 600)
+        #endif
     }
     
     // MARK: - Status Bar
@@ -172,14 +176,19 @@ struct ContentView: View {
     private var inputBar: some View {
         HStack(spacing: 12) {
             TextField("Ask about travel...", text: $userInput)
+                #if os(iOS)
                 .textFieldStyle(.plain)
                 .padding(12)
                 .background(Color(white: 0.95))
                 .cornerRadius(20)
+                #else
+                .textFieldStyle(.roundedBorder)
+                .foregroundColor(.black)
+                #endif
                 .focused($isInputFocused)
                 .submitLabel(.send)
                 .onSubmit(sendQuery)
-                .disabled(agent.isLoading || agent.isGenerating)
+                .onAppear { isInputFocused = true }
             
             Button(action: sendQuery) {
                 Image(systemName: "arrow.up.circle.fill")
