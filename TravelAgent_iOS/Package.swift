@@ -25,7 +25,8 @@ let package = Package(
             resources: [
                 .copy("Resources/Llama_TravelAgent"),
                 .process("Assets.xcassets")
-            ]
+            ],
+            cxxLanguageStandard: .cxx17
         )
     ]
 )

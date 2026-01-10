@@ -176,19 +176,9 @@ struct ContentView: View {
     private var inputBar: some View {
         HStack(spacing: 12) {
             TextField("Ask about travel...", text: $userInput)
-                #if os(iOS)
-                .textFieldStyle(.plain)
-                .padding(12)
-                .background(Color(white: 0.95))
-                .cornerRadius(20)
-                #else
                 .textFieldStyle(.roundedBorder)
-                .foregroundColor(.black)
-                #endif
-                .focused($isInputFocused)
-                .submitLabel(.send)
+                .padding(8)
                 .onSubmit(sendQuery)
-                .onAppear { isInputFocused = true }
             
             Button(action: sendQuery) {
                 Image(systemName: "arrow.up.circle.fill")
