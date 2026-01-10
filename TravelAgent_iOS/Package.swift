@@ -3,9 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "SmartTravelPlanner",
-    platforms: [
-        .iOS(.v17),
-        .macOS(.v14)
+        .iOS(.v17)
     ],
     products: [
         .library(name: "SmartTravelPlanner", targets: ["SmartTravelPlanner"])
